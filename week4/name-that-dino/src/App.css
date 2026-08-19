@@ -1,0 +1,185 @@
+@keyframes pop-in {
+  from {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translateX(-6px) rotate(-3deg);
+  }
+  20%,
+  80% {
+    transform: translateX(8px) rotate(3deg);
+  }
+  30%,
+  50%,
+  70% {
+    transform: translateX(-10px) rotate(-4deg);
+  }
+  40%,
+  60% {
+    transform: translateX(10px) rotate(4deg);
+  }
+}
+
+@keyframes correct-pulse {
+  0%,
+  100% {
+    transform: scale(1.05);
+  }
+  50% {
+    transform: scale(1.12);
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  60% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.game {
+  min-height: 100svh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 16px 40px;
+  background: linear-gradient(180deg, #fff6da 0%, #d6f3e5 100%);
+}
+
+.game-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.game-header h1 {
+  margin: 0;
+  font-size: clamp(32px, 6vw, 48px);
+  color: #3a2e5c;
+  font-family: 'Comic Sans MS', 'Trebuchet MS', system-ui, sans-serif;
+}
+
+.stars {
+  font-size: 28px;
+  min-height: 34px;
+  letter-spacing: 4px;
+}
+
+.prompt {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  padding: 12px 24px;
+  border-radius: 999px;
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.08);
+}
+
+.prompt p {
+  margin: 0;
+  font-size: clamp(20px, 4vw, 28px);
+  color: #3a2e5c;
+}
+
+.prompt strong {
+  color: #d9782f;
+}
+
+.replay-btn {
+  font-size: 26px;
+  border: none;
+  background: #ffe08a;
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #e6b94e;
+  transition: transform 0.1s;
+}
+
+.replay-btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #e6b94e;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+  max-width: 900px;
+}
+
+.card {
+  animation: pop-in 0.35s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: min(220px, 40vw);
+  padding: 16px;
+  border: none;
+  border-radius: 28px;
+  background: white;
+  cursor: pointer;
+  box-shadow: 0 8px 0 rgba(0, 0, 0, 0.1);
+  transition: transform 0.15s;
+}
+
+.card:active {
+  transform: translateY(4px);
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.card-art {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.15));
+}
+
+.card-label {
+  font-size: clamp(18px, 3vw, 22px);
+  font-weight: 700;
+  color: #3a2e5c;
+  font-family: 'Comic Sans MS', 'Trebuchet MS', system-ui, sans-serif;
+}
+
+.card--correct {
+  background: #e3ffe6;
+  outline: 5px solid #4cbf7d;
+  animation: correct-pulse 0.6s ease-in-out infinite;
+}
+
+.card--wrong {
+  animation: shake 0.5s ease;
+  background: #ffe8e6;
+}
+
+.celebration {
+  font-size: clamp(22px, 5vw, 32px);
+  font-family: 'Comic Sans MS', 'Trebuchet MS', system-ui, sans-serif;
+  color: #d9782f;
+  background: white;
+  padding: 12px 28px;
+  border-radius: 24px;
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.1);
+  animation: bounce-in 0.4s ease;
+}
